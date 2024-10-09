@@ -14,7 +14,7 @@ public class ProductService {
 
     private final ProductRepository productRepository;
 
-    public List<Product> getKeys() {
+    public List<Product> getProducts() {
         return productRepository.findAll();
     }
 
@@ -25,5 +25,9 @@ public class ProductService {
                 .price(form.getPrice())
                 .stock(form.getStock())
                 .build());
+    }
+
+    public Product getProduct(Integer id) {
+        return productRepository.findById(id);
     }
 }

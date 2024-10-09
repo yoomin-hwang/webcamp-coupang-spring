@@ -9,4 +9,7 @@
         values
             (#{name}, #{price}, #{stock}, #{description})
     </select>
+    <select id="findById" resultType="product">
+        select * from product where id = #{id}
+    </select>
 </mapper>

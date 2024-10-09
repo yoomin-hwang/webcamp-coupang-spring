@@ -19,4 +19,8 @@ public class ProductRepository {
     public void add(Product product) {
         sqlSession.insert("Product.add", product);
     }
+
+    public Product findById(Integer id) {
+        return sqlSession.selectOne("Product.findById", id);
+    }
 }

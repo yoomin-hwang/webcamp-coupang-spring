@@ -27,38 +27,21 @@
         </div>
     </div>
 </nav>
-<div class="container-fluid mt-5">
-    <h2>상품 목록</h2>
-    <div class="d-flex justify-content-end mb-3">
-        <button class="btn btn-success" onclick="location.href='./add'">상품 생성하기</button>
+<div class="container mt-5">
+    <h2 class="text-center">상품 상세 정보</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">상품명: <span th:text="${product.name}">상품 이름</span></h3>
+                    <p class="card-text">가격: <span th:text="${product.price}">₩ 가격</span></p>
+                    <p class="card-text">재고 수량: <span th:text="${product.stock}">재고 수량</span></p>
+                    <p class="card-text">설명: <span th:text="${product.description}">상품 설명</span></p>
+                    <button class="btn btn-primary">구매하기</button>
+                </div>
+            </div>
+        </div>
     </div>
-    <table class="table table-bordered">
-        <thead class="thead-light">
-        <tr>
-            <th>상품명</th>
-            <th>가격</th>
-            <th>재고 수량</th>
-            <th>생성 일자</th>
-            <th>수정 일자</th>
-            <th>Action</th>
-        </tr>
-        </thead>
-        <tbody>
-
-        <tr th:each="product, iterStat : ${products.productList}">
-            <td><a th:href="@{'/products/' + ${product.id}}" th:text="${product.name}">name</a></td>
-            <td th:text="${product.price}">price</td>
-            <td th:text="${product.stock}">stock</td>
-            <td th:text="${product.createdAt}">createdAt</td>
-            <td th:text="${product.updatedAt}">updatedAt</td>
-            <td>
-                <button class="btn btn-danger" th:onclick="confirmDelete([[${product.id}]])">삭제하기</button>
-                <button class="btn btn-warning" th:onclick="location.href='./edit/' + [[${product.id}]]">수정하기</button>
-                <button class="btn btn-info" th:onclick="location.href='./' + [[${product.id}]]">상세 보기</button>
-            </td>
-        </tr>
-        </tbody>
-    </table>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
