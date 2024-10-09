@@ -23,4 +23,8 @@ public class ProductRepository {
     public Product findById(Integer id) {
         return sqlSession.selectOne("Product.findById", id);
     }
+
+    public void edit(Product product) {
+        sqlSession.update("Product.edit", product);
+    }
 }
