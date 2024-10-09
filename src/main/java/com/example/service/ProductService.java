@@ -41,4 +41,8 @@ public class ProductService {
                 .stock(form.getStock())
                 .build());
     }
+
+    public void deleteProduct(Integer id) {
+        productRepository.delete(id);
+    }
 }

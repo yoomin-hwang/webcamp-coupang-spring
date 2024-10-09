@@ -17,4 +17,7 @@
         set name = #{name}, price = #{price}, stock = #{stock}, description = #{description}
         where id = #{id}
     </select>
+    <select id="delete">
+        delete from product where id = #{id}
+    </select>
 </mapper>

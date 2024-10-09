@@ -27,4 +27,8 @@ public class ProductRepository {
     public void edit(Product product) {
         sqlSession.update("Product.edit", product);
     }
+
+    public void delete(Integer id) {
+        sqlSession.delete("Product.delete", id);
+    }
 }

@@ -26,12 +26,21 @@
                     <p class="card-text">가격: <span th:text="${product.price}">₩ 가격</span></p>
                     <p class="card-text">재고 수량: <span th:text="${product.stock}">재고 수량</span></p>
                     <p class="card-text">설명: <span th:text="${product.description}">상품 설명</span></p>
-                    <button class="btn btn-primary">구매하기</button>
+                    <button class="btn btn-warning" th:onclick="location.href='./edit/' + [[${product.id}]]">수정하기</button>
+                    <button class="btn btn-danger" th:onclick="confirmDelete([[${product.id}]])">삭제하기</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    function confirmDelete(id) {
+        if (confirm('정말 삭제하시겠습니까?')) {
+            location.href = './delete/' + id;
+        }
+    }
+</script>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
