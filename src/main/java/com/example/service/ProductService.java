@@ -1,5 +1,6 @@
 package com.example.service;
 
+import com.example.controller.form.AddProductForm;
 import com.example.entity.Product;
 import com.example.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
@@ -11,10 +12,18 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProductService {
 
-        private final ProductRepository productRepository;
+    private final ProductRepository productRepository;
 
-        public List<Product> getKeys() {
-            return productRepository.findAll();
-        }
+    public List<Product> getKeys() {
+        return productRepository.findAll();
+    }
 
+    public void addProduct(AddProductForm form) {
+        productRepository.add(Product.builder()
+                .name(form.getName())
+                .description(form.getDescription())
+                .price(form.getPrice())
+                .stock(form.getStock())
+                .build());
+    }
 }

@@ -15,4 +15,8 @@ public class ProductRepository {
     public List<Product> findAll() {
         return sqlSession.selectList("Product.findAll");
     }
+
+    public void add(Product product) {
+        sqlSession.insert("Product.add", product);
+    }
 }

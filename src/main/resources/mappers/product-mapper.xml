@@ -4,4 +4,9 @@
     <select id="findAll" resultType="product">
         select * from product order by createdAt desc
     </select>
+    <select id="add">
+        insert into product (name, price, stock, description)
+        values
+            (#{name}, #{price}, #{stock}, #{description})
+    </select>
 </mapper>

@@ -1,4 +1,4 @@
-package com.example.dto;
+package com.example.controller.dto;
 
 import com.example.entity.Product;
 import lombok.Builder;
