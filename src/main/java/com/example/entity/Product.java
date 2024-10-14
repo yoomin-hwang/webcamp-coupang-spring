@@ -13,6 +13,7 @@ public class Product {
     private String name;
     private int price;
     private int stock;
+    private String image;
     private String description;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

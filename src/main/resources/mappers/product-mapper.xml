@@ -5,9 +5,9 @@
         select * from product order by createdAt desc
     </select>
     <select id="add">
-        insert into product (name, price, stock, description)
+        insert into product (name, price, stock, description, image)
         values
-            (#{name}, #{price}, #{stock}, #{description})
+            (#{name}, #{price}, #{stock}, #{description}, #{image})
     </select>
     <select id="findById" resultType="product">
         select * from product where id = #{id}

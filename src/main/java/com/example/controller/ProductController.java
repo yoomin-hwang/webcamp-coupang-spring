@@ -8,10 +8,10 @@ import com.example.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequiredArgsConstructor
@@ -26,14 +26,15 @@ public class ProductController {
     }
 
     @GetMapping("/products/add")
-    public String add(Model model) {
-        model.addAttribute("form", new AddProductForm());
+    public String add() {
         return "add";
     }
 
     @PostMapping("/products/add")
-    public String addOk(@ModelAttribute("form") AddProductForm form) {
-        productService.addProduct(form);
+    public String addOk(AddProductForm form,
+                        @RequestParam MultipartFile image,
+                        HttpServletRequest request) {
+        productService.addProduct(form, image, request);
         return "redirect:/products/list";
     }
 
