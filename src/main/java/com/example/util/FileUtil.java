@@ -20,6 +20,17 @@ public class FileUtil {
             filename = file.getOriginalFilename();
             File destFile = new File(realPath, filename);
 
+            if (destFile.exists()) {
+                String name = filename.substring(0, filename.lastIndexOf("."));
+                String extension = filename.substring(filename.lastIndexOf("."));
+                int counter = 1;
+                while (destFile.exists()) {
+                    filename = name + "_" + counter + extension;
+                    destFile = new File(realPath, filename);
+                    counter++;
+                }
+            }
+
             try {
                 file.transferTo(destFile);
 

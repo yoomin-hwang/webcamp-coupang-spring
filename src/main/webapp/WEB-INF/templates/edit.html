@@ -19,7 +19,7 @@
 
 <div class="container mt-5">
     <h2 class="mb-4">상품 수정하기</h2>
-    <form th:action="@{/products/edit}" th:object="${form}" method="post">
+    <form th:action="@{/products/edit}" th:object="${form}" method="post" enctype="multipart/form-data">
         <input type="hidden" th:field="*{id}">
         <div class="form-group">
             <label for="name">상품명:</label>
@@ -40,6 +40,14 @@
             <label for="description">설명:</label>
             <textarea id="description" name="description" class="form-control" th:field="*{description}"
                       placeholder="설명" maxlength="200"></textarea>
+        </div>
+        <div class="form-group">
+            <label>기존 이미지:</label>
+            <img th:src="@{'/image/' + ${image}}" style="width: 200px; height: 200px;">
+        </div>
+        <div class="form-group">
+            <label for="image">상품 이미지:</label>
+            <input type="file" id="image" name="image" class="form-control" accept="image/*">
         </div>
         <div class="form-group text-right">
             <button type="submit" class="btn btn-primary">수정하기</button>

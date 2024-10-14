@@ -14,6 +14,7 @@ public class ProductDto {
     private String description;
     private int price;
     private int stock;
+    private String image;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
@@ -24,6 +25,7 @@ public class ProductDto {
                 .description(product.getDescription())
                 .price(product.getPrice())
                 .stock(product.getStock())
+                .image(product.getImage())
                 .createdAt(product.getCreatedAt())
                 .updatedAt(product.getUpdatedAt())
                 .build();

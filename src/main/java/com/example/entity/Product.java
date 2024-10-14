@@ -3,11 +3,13 @@ package com.example.entity;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
 @Builder
 @Getter
+@Setter
 public class Product {
     private int id;
     private String name;

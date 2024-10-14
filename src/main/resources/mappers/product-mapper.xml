@@ -14,7 +14,7 @@
     </select>
     <select id="edit">
         update product
-        set name = #{name}, price = #{price}, stock = #{stock}, description = #{description}
+        set name = #{name}, price = #{price}, stock = #{stock}, description = #{description}, image = #{image}
         where id = #{id}
     </select>
     <select id="delete">

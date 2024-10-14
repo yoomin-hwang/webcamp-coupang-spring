@@ -4,6 +4,7 @@ import com.example.controller.dto.ProductDto;
 import com.example.controller.dto.ProductListDto;
 import com.example.controller.form.AddProductForm;
 import com.example.controller.form.EditProductForm;
+import com.example.entity.Product;
 import com.example.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -46,13 +47,16 @@ public class ProductController {
 
     @GetMapping("/products/edit/{id}")
     public String edit(Model model, @PathVariable("id") Integer id) {
-        model.addAttribute("form", EditProductForm.from(productService.getProduct(id)));
+        Product product = productService.getProduct(id);
+        EditProductForm form = EditProductForm.from(product);
+        model.addAttribute("form", form);
+        model.addAttribute("image", product.getImage());
         return "edit";
     }
 
     @PostMapping("/products/edit")
-    public String editOk(@ModelAttribute("form") EditProductForm form) {
-        productService.editProduct(form);
+    public String editOk(@ModelAttribute("form") EditProductForm form, @RequestParam MultipartFile image, HttpServletRequest request) {
+        productService.editProduct(form, image, request);
         return "redirect:/products/list";
     }
 

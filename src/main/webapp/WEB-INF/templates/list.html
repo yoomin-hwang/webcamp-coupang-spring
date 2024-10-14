@@ -24,6 +24,7 @@
     <table class="table table-bordered">
         <thead class="thead-light">
         <tr>
+            <th>사진</th>
             <th>상품명</th>
             <th>가격</th>
             <th>재고 수량</th>
@@ -35,6 +36,11 @@
         <tbody>
 
         <tr th:each="product, iterStat : ${products.productList}">
+            <td>
+                <a th:href="@{'/products/' + ${product.id}}">
+                    <img th:src="@{'/image/' + ${product.image}}" style="width: 200px; height: 200px;">
+                </a>
+            </td>
             <td><a th:href="@{'/products/' + ${product.id}}" th:text="${product.name}">name</a></td>
             <td th:text="${product.price}">price</td>
             <td th:text="${product.stock}">stock</td>

@@ -36,16 +36,15 @@ public class ProductService {
         return productRepository.findById(id);
     }
 
-    public void editProduct(EditProductForm form) {
-        productRepository.edit(Product.builder()
-                .id(form.getId())
-                .name(form.getName())
-                .description(form.getDescription())
-                .price(form.getPrice())
-                .stock(form.getStock())
-                .build());
+    public void editProduct(EditProductForm form, MultipartFile image, HttpServletRequest request) {
+        Product product = productRepository.findById(form.getId());
+        product.setImage(FileUtil.uploadFile(image, product.getImage(), request));
+        product.setName(form.getName());
+        product.setDescription(form.getDescription());
+        product.setPrice(form.getPrice());
+        product.setStock(form.getStock());
+        productRepository.edit(product);
     }
-
     public void deleteProduct(Integer id) {
         productRepository.delete(id);
     }
