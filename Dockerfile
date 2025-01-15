@@ -1,8 +1,3 @@
-FROM maven:3.8.4-openjdk-8 as builder
-WORKDIR /app
-COPY . .
-RUN mvn clean package -DskipTests
-
 FROM tomcat:9.0
 
 COPY --from=builder /app/target/*.war /usr/local/tomcat/webapps/ROOT.war
